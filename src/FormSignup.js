@@ -3,11 +3,14 @@ import validate from './validateInfo';
 import useForm from './useForm';
 import './Form.css';
 
-const FormSignup = ({ submitForm }) => {
+const FormSignup = ({ submitForm , auxiliary, setAuxiliary}) => {
   const { handleChange, handleSubmit, values, errors } = useForm(
     submitForm,
     validate
   );
+  const handleClick = () => {
+    setAuxiliary(true);
+  }
 
   return (
     <div className='form-content-right'>
@@ -65,10 +68,10 @@ const FormSignup = ({ submitForm }) => {
           {errors.password2 && <p>{errors.password2}</p>}
         </div>
         <button className='form-input-btn' type='submit'>
-          Sign up
+          Sign-up
         </button>
         <span className='form-input-login'>
-          Already have an account? Login <a href='#'>here</a>
+          Already have an account? Login <button onClick={handleClick}>here</button>
         </span>
       </form>
     </div>
